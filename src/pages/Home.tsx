@@ -76,7 +76,7 @@ const brandLogos = [
   { src: brandRangeRover, alt: 'Range Rover' },
   { src: brandHyundai, alt: 'Hyundai' },
   { src: brandAudi, alt: 'Audi' },
-  { src: brandBmw, alt: 'BMW' },
+  { src: brandBmw, alt: 'BMW', keepColor: true },
   { src: brandPorsche, alt: 'Porsche' },
   { src: brandMercedes, alt: 'Mercedes-Benz' },
   { src: brandVolvo, alt: 'Volvo' },
@@ -231,14 +231,22 @@ function Home() {
           <ul className="brand-list">
             {brandLogos.map((brand) => (
               <li key={brand.alt}>
-                <img src={brand.src} alt={brand.alt} />
+                <img
+                  src={brand.src}
+                  alt={brand.alt}
+                  className={brand.keepColor ? 'keep-color' : undefined}
+                />
               </li>
             ))}
           </ul>
           <ul className="brand-list" aria-hidden="true">
             {brandLogos.map((brand) => (
               <li key={brand.alt}>
-                <img src={brand.src} alt="" />
+                <img
+                  src={brand.src}
+                  alt=""
+                  className={brand.keepColor ? 'keep-color' : undefined}
+                />
               </li>
             ))}
           </ul>
@@ -249,12 +257,22 @@ function Home() {
         <h2 className="servicing-title">Fast and Efficient Vehicle Servicing</h2>
 
         <div className="servicing-carousel">
-          <img
-            className="servicing-peek"
-            src={caseStudies[(servicingIndex - 1 + caseStudies.length) % caseStudies.length].src}
-            alt=""
-            aria-hidden="true"
-          />
+          <div className="servicing-peek-wrap">
+            <img
+              className="servicing-peek"
+              src={caseStudies[(servicingIndex - 1 + caseStudies.length) % caseStudies.length].src}
+              alt=""
+              aria-hidden="true"
+            />
+            <button
+              type="button"
+              className="carousel-arrow prev"
+              onClick={showPrevServicing}
+              aria-label="Previous case study"
+            >
+              <img src={arrowServicePrev} alt="" className="flip" />
+            </button>
+          </div>
 
           <div className="servicing-main">
             <div className="servicing-photo-wrap">
@@ -264,22 +282,6 @@ function Home() {
                 alt={activeCaseStudy.alt}
               />
               <span className="tag">{activeCaseStudy.tag}</span>
-              <button
-                type="button"
-                className="carousel-arrow prev"
-                onClick={showPrevServicing}
-                aria-label="Previous case study"
-              >
-                <img src={arrowServicePrev} alt="" className="flip" />
-              </button>
-              <button
-                type="button"
-                className="carousel-arrow next"
-                onClick={showNextServicing}
-                aria-label="Next case study"
-              >
-                <img src={arrowServiceNext} alt="" />
-              </button>
             </div>
 
             <div className="case-card">
@@ -303,12 +305,22 @@ function Home() {
             </div>
           </div>
 
-          <img
-            className="servicing-peek"
-            src={caseStudies[(servicingIndex + 1) % caseStudies.length].src}
-            alt=""
-            aria-hidden="true"
-          />
+          <div className="servicing-peek-wrap">
+            <img
+              className="servicing-peek"
+              src={caseStudies[(servicingIndex + 1) % caseStudies.length].src}
+              alt=""
+              aria-hidden="true"
+            />
+            <button
+              type="button"
+              className="carousel-arrow next"
+              onClick={showNextServicing}
+              aria-label="Next case study"
+            >
+              <img src={arrowServiceNext} alt="" />
+            </button>
+          </div>
         </div>
       </section>
 
@@ -327,7 +339,7 @@ function Home() {
             onClick={showPrevGallery}
             aria-label="Previous photos"
           >
-            <img src={arrowGalleryPrev} alt="" />
+            <img src={arrowGalleryPrev} alt="" className="flip" />
           </button>
           <button
             type="button"

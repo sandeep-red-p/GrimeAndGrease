@@ -12,9 +12,9 @@ function Header() {
         <Link to="/" className="brand" onClick={() => setMenuOpen(false)}>
           <img src={logo} alt="Grime & Grease Garage" />
         </Link>
-        <Link className="btn-quote" to="/contact">
-          Get a Quote
-        </Link>
+        <a className="btn-quote" href="tel:+919741297321">
+          Call Now
+        </a>
         <button
           type="button"
           className="hamburger"

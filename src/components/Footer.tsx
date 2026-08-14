@@ -1,14 +1,14 @@
-import social1 from '../assets/home/social-1.svg'
-import social2 from '../assets/home/social-2.svg'
-import social3 from '../assets/home/social-3.svg'
-import social4 from '../assets/home/social-4.svg'
+import socialFacebook from '../assets/home/social-facebook.svg'
+import socialInstagram from '../assets/home/social-4.svg'
 import iconCall from '../assets/home/icon-call.svg'
 import iconPin from '../assets/home/icon-pin.svg'
 
-const socialLinks = [social1, social2, social3, social4]
+const socialLinks = [
+  { icon: socialFacebook, label: 'Facebook' },
+  { icon: socialInstagram, label: 'Instagram' },
+]
 
-const address =
-  'Site No 11/1 Opposite MANYA MAGNAVILLE Chikkathoguru, Post, near Gundthop, Electronic City, Devendra Nagar, Bengaluru, Karnataka 560100'
+const mapQuery = '12.8553085,77.6481841(Grime %26 Grease Garage)'
 
 function Footer() {
   return (
@@ -17,30 +17,37 @@ function Footer() {
         <iframe
           className="footer-map"
           title="Map to Grime & Grease Garage"
-          src={`https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`}
+          src={`https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&z=16&output=embed`}
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />
         <div className="footer-info">
-          <p className="footer-address">
+          <a
+            className="footer-address"
+            href="https://maps.app.goo.gl/Brca4o5tngUr283W8"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img src={iconPin} alt="" className="footer-icon" />
-            Site No 11/1 Opposite MANYA MAGNAVILLE Chikkathoguru, Post, near
-            Gundthop, Electronic City, Devendra Nagar, Bengaluru, Karnataka
-            560100
-          </p>
+            <span className="footer-address-text">
+              Site No 11/1 Opposite MANYA MAGNAVILLE Chikkathoguru, Post, near
+              Gundthop, Electronic City, Devendra Nagar, Bengaluru, Karnataka
+              560100
+            </span>
+          </a>
           <a className="footer-phone" href="tel:+919741297321">
             <img src={iconCall} alt="" className="footer-icon" />
             +91 97412 97321
           </a>
           <div className="footer-social">
-            {socialLinks.map((icon, index) => (
+            {socialLinks.map((social) => (
               <a
-                key={icon}
+                key={social.label}
                 href="#"
                 className="social-link"
-                aria-label={`Social link ${index + 1}`}
+                aria-label={social.label}
               >
-                <img src={icon} alt="" />
+                <img src={social.icon} alt="" />
               </a>
             ))}
           </div>
