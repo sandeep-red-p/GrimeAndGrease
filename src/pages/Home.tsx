@@ -1,6 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import heroImg from '../assets/home/hero.png'
+import heroImg1 from '../assets/home/hero1.png'
+import heroMobile from '../assets/home/hero-mobile.jpg'
+import heroMobile1 from '../assets/home/hero-mobile1.jpg'
 
 import iconGeneral from '../assets/home/icon-general.svg'
 import iconEngine from '../assets/home/icon-engine.svg'
@@ -178,9 +181,34 @@ const initialGallery = [
   { src: gallery4, alt: 'Recent work — vehicle detail 4' },
 ]
 
+const heroSlides = [
+  {
+    src: heroImg,
+    mobile: heroMobile,
+    alt: 'Grime & Grease Garage — We love cars and all their problems',
+  },
+  {
+    src: heroImg1,
+    mobile: heroMobile1,
+    alt: 'Every classic has a story. We help it continue.',
+  },
+]
+
 function Home() {
+  const [heroIndex, setHeroIndex] = useState(0)
   const [servicingIndex, setServicingIndex] = useState(0)
   const [gallery, setGallery] = useState(initialGallery)
+
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)')
+    if (media.matches) return
+
+    const id = window.setInterval(() => {
+      setHeroIndex((i) => (i + 1) % heroSlides.length)
+    }, 5000)
+
+    return () => window.clearInterval(id)
+  }, [])
 
   const showPrevServicing = () =>
     setServicingIndex((i) => (i - 1 + caseStudies.length) % caseStudies.length)
@@ -189,18 +217,35 @@ function Home() {
 
   const activeCaseStudy = caseStudies[servicingIndex]
 
+  const galleryStep = () =>
+    window.matchMedia('(max-width: 960px)').matches ? 1 : 2
+
   const showPrevGallery = () =>
-    setGallery((g) => [g[g.length - 1], ...g.slice(0, -1)])
-  const showNextGallery = () => setGallery((g) => [...g.slice(1), g[0]])
+    setGallery((g) => {
+      const step = galleryStep()
+      return [...g.slice(-step), ...g.slice(0, -step)]
+    })
+  const showNextGallery = () =>
+    setGallery((g) => {
+      const step = galleryStep()
+      return [...g.slice(step), ...g.slice(0, step)]
+    })
 
   return (
     <>
       <section className="hero" id="top">
-        <img
-          className="hero-image"
-          src={heroImg}
-          alt="Grime & Grease Garage — We love cars and all their problems"
-        />
+        <div className="hero-slides">
+          {heroSlides.map((slide, index) => (
+            <picture key={slide.src}>
+              <source media="(max-width: 960px)" srcSet={slide.mobile} />
+              <img
+                className={`hero-image${index === heroIndex ? ' is-active' : ''}`}
+                src={slide.src}
+                alt={slide.alt}
+              />
+            </picture>
+          ))}
+        </div>
         <div className="hero-tagline-band">
           <p className="container">
             From full-scale repairs to fine detailing, Grime &amp; Grease
