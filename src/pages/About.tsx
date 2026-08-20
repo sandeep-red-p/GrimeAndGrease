@@ -87,7 +87,9 @@ function About() {
       </section>
 
       <section className="what-we-do container">
-        <img src={whatWeDoImg} alt="Engine repair at Grime & Grease Garage" />
+        <div className="what-we-do-image">
+          <img src={whatWeDoImg} alt="Engine repair at Grime & Grease Garage" />
+        </div>
         <div>
           <h2 className="heading-accent">What We Do</h2>
           <p>
