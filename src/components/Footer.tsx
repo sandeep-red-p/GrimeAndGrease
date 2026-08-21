@@ -44,9 +44,8 @@ function Footer() {
             <div className="footer-address">
               <img src={iconPin} alt="" className="footer-icon" />
               <span className="footer-address-text">
-                Site No 11/1 Opposite MANYA MAGNAVILLE Chikkathoguru, Post, near
-                Gundthop, Electronic City, Devendra Nagar, Bengaluru, Karnataka
-                560100
+                Site No 11/1 Chikka Thogur, Devendra Nagar, Near Gundthop,
+                Electronic City Post, Bengaluru - 560100
               </span>
             </div>
             <div className="footer-phone">
