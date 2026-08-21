@@ -920,17 +920,30 @@ button {
 .case-card ul {
   margin: 8px 0;
   padding: 16px 0 16px 32px;
-  list-style: disc;
+  list-style: none;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
 .case-card ul li {
+  position: relative;
   font-family: 'Gotham Book', var(--font-body);
   font-weight: 400;
   font-size: calc(clamp(16px, 2vw, 25px) - 2px);
   line-height: 1.4;
+}
+
+.case-card ul li::before {
+  content: '';
+  position: absolute;
+  left: -0.9em;
+  /* first-line center (0.5 * line-height) minus half dot */
+  top: calc(0.7em - 0.175em);
+  width: 0.35em;
+  height: 0.35em;
+  border-radius: 50%;
+  background: currentColor;
 }
 
 .case-card .outcome {
