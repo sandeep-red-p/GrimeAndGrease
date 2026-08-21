@@ -30,18 +30,18 @@ function Header() {
         <Link to="/" className="brand" onClick={() => setMenuOpen(false)}>
           <img src={logo} alt="Grime & Grease Garage" />
         </Link>
-        <a className="btn-quote btn-quote--mobile" href="tel:+919741297321">
+        <a className="btn-cta btn-cta--mobile" href="tel:+919741297321">
           Call Now
         </a>
         <Link
-          className="btn-quote btn-quote--desktop"
+          className="btn-cta btn-cta--desktop"
           to="/contact"
           onClick={() => setMenuOpen(false)}
           style={isContactPage ? { visibility: "hidden" } : undefined}
           aria-hidden={isContactPage}
           tabIndex={isContactPage ? -1 : undefined}
         >
-          Get a Quote
+          Get in Touch
         </Link>
         <button
           type="button"

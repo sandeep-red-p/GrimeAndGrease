@@ -160,7 +160,7 @@ button {
   width: auto;
 }
 
-.btn-quote {
+.btn-cta {
   margin-left: auto;
   flex-shrink: 0;
   background: var(--cream);
@@ -181,22 +181,22 @@ button {
     border-color 200ms ease;
 }
 
-.btn-quote--desktop {
+.btn-cta--desktop {
   display: none;
 }
 
 @media (min-width: 601px) {
-  .btn-quote--mobile {
+  .btn-cta--mobile {
     display: none;
   }
 
-  .btn-quote--desktop {
+  .btn-cta--desktop {
     display: inline-block;
   }
 }
 
 @media (min-width: 961px) {
-  .btn-quote:hover,
+  .btn-cta:hover,
   .btn-submit:hover {
     background: var(--green);
     color: var(--cream);
