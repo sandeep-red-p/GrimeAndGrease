@@ -90,7 +90,7 @@ const brandLogos = [
   { src: brandMitsubishi, alt: "Mitsubishi" },
   { src: brandSuzuki, alt: "Suzuki" },
   { src: brandMg, alt: "MG" },
-  { src: brandRangeRover, alt: "Range Rover" },
+  { src: brandRangeRover, alt: "Range Rover", sizeClass: "brand-xl" },
   { src: brandHyundai, alt: "Hyundai" },
   { src: brandAudi, alt: "Audi" },
   { src: brandBmw, alt: "BMW", keepColor: true },
@@ -100,11 +100,17 @@ const brandLogos = [
   { src: brandToyota, alt: "Toyota" },
   { src: brandKia, alt: "Kia" },
   { src: brandVw, alt: "Volkswagen" },
-  { src: brandMahindra, alt: "Mahindra" },
+  { src: brandMahindra, alt: "Mahindra", sizeClass: "brand-large" },
   { src: brandTata, alt: "Tata" },
   { src: brandHonda, alt: "Honda" },
   { src: brandSkoda, alt: "Skoda" },
 ];
+
+function brandLogoClassName(brand: { keepColor?: boolean; sizeClass?: string }) {
+  return [brand.keepColor && "keep-color", brand.sizeClass]
+    .filter(Boolean)
+    .join(" ") || undefined;
+}
 
 const caseStudies = [
   {
@@ -357,7 +363,7 @@ function Home() {
                   <img
                     src={brand.src}
                     alt={brand.alt}
-                    className={brand.keepColor ? "keep-color" : undefined}
+                    className={brandLogoClassName(brand)}
                   />
                 </li>
               ))}
@@ -368,7 +374,7 @@ function Home() {
                   <img
                     src={brand.src}
                     alt=""
-                    className={brand.keepColor ? "keep-color" : undefined}
+                    className={brandLogoClassName(brand)}
                   />
                 </li>
               ))}

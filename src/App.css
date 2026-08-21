@@ -394,7 +394,7 @@ button {
 /* Brand strip */
 
 .brand-strip {
-  padding-block: clamp(20px, 5.16vw, 99px);
+  padding-block: clamp(20px, 4.644vw, 89px);
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -439,20 +439,21 @@ button {
 }
 
 .brand-list {
+  --brand-h: clamp(40px, 7.8125vw, 90px);
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   align-items: center;
-  gap: 56px;
+  gap: 61.6px;
   padding-inline: 28px;
   flex-shrink: 0;
 }
 
 .brand-list img {
-  height: clamp(64px, 6.5vw, 108px);
+  height: var(--brand-h);
   width: auto;
-  max-width: min(200px, 10.42vw);
+  max-width: calc(var(--brand-h) * 1.852);
   object-fit: contain;
   filter: brightness(0);
 }
@@ -466,6 +467,18 @@ button {
 
 .brand-list img.keep-color {
   filter: none;
+}
+
+/* Wide wordmarks are width-bound under object-fit: contain, so only widen the
+   box — overriding height here would stretch the whole marquee row. Multipliers
+   stay relative to --brand-h so every logo keeps the same relative size at any
+   viewport: 1.852 base, x1.4 large, x2.5 xl. */
+.brand-list img.brand-large {
+  max-width: calc(var(--brand-h) * 2.593);
+}
+
+.brand-list img.brand-xl {
+  max-width: calc(var(--brand-h) * 4.63);
 }
 
 @keyframes brand-scroll {
