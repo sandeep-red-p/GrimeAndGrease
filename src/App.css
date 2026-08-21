@@ -101,6 +101,9 @@
 }
 
 .page {
+  position: relative;
+  max-width: 2400px;
+  margin-inline: auto;
   overflow-x: hidden;
 }
 
@@ -281,9 +284,14 @@ button {
   height: clamp(360px, 56vw, 1080px);
 }
 
+/* Use the available desktop height only while a 16:9 hero image can fill it
+   without cover-cropping. */
 @media (min-width: 961px) {
   .hero-slides {
-    height: calc(100vh - calc(clamp(88px, 9.11vw, 175px) / 2));
+    height: min(
+      calc(100vh - calc(clamp(88px, 9.11vw, 175px) / 2)),
+      clamp(360px, 56.25vw, 1080px)
+    );
   }
 }
 
@@ -782,7 +790,7 @@ button {
   --steps-gap: clamp(6px, 1vw, 16px);
   position: relative;
   list-style: none;
-  margin: 0;
+  margin: auto;
   padding-inline-start: calc(var(--steps-pad-inline) + 12px);
   padding-inline-end: var(--steps-pad-inline);
   padding-block: var(--steps-pad-top);
@@ -998,6 +1006,7 @@ button {
 }
 
 .site-footer .container {
+  max-width: none;
   padding-inline: 10.4167vw;
 }
 
@@ -1133,8 +1142,7 @@ button {
 }
 
 .footer-bottom {
-  max-width: 1520px;
-  margin-inline: auto;
+  max-width: none;
   padding-inline: 10.4167vw;
 }
 
@@ -2236,5 +2244,28 @@ button {
 
   .team-card.reverse .team-quote {
     align-self: flex-end;
+  }
+}
+
+/* Keep the desktop composition at its 2400px design scale on ultrawide
+   screens instead of continuing to expand viewport-based gutters. */
+@media (min-width: 2400px) {
+  .header-inner,
+  .site-footer .container,
+  .footer-bottom,
+  .what-we-do,
+  .why-choose,
+  .team,
+  .about-hero-band p {
+    padding-inline: 200px;
+  }
+
+  .process .container {
+    max-width: none;
+  }
+
+  .process-inner {
+    width: 1520px;
+    margin-inline: auto;
   }
 }
