@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
-import heroImg from "../assets/home/hero.png";
-import heroImg1 from "../assets/home/hero1.png";
-import heroMobile from "../assets/home/hero-mobile.jpg";
-import heroMobile1 from "../assets/home/hero-mobile1.jpg";
+import heroImg from "../assets/home/hero.webp";
+import heroImg1 from "../assets/home/hero1.webp";
+import heroMobile from "../assets/home/hero-mobile.webp";
+import heroMobile1 from "../assets/home/hero-mobile1.webp";
 
 import iconGeneral from "../assets/home/icon-general.svg";
 import iconEngine from "../assets/home/icon-engine.svg";
@@ -36,11 +36,11 @@ import brandTata from "../assets/home/brand-tata.svg";
 import brandHonda from "../assets/home/brand-honda.svg";
 import brandSkoda from "../assets/home/brand-skoda.svg";
 
-import servicingPajero from "../assets/home/servicing-1.svg";
-import servicingJetta from "../assets/home/servicing-2.svg";
-import servicingAudiQ3 from "../assets/home/servicing-3.svg";
-import servicingXuv500 from "../assets/home/Restored_XUV500.png";
-import servicingMercML350 from "../assets/home/Merc_ML350_2.png";
+import servicingPajero from "../assets/home/servicing-1.webp";
+import servicingJetta from "../assets/home/servicing-2.webp";
+import servicingAudiQ3 from "../assets/home/servicing-3.webp";
+import servicingXuv500 from "../assets/home/Restored_XUV500.webp";
+import servicingMercML350 from "../assets/home/Merc_ML350_2.webp";
 import arrowServicePrev from "../assets/home/arrow-service-prev.svg";
 import arrowServiceNext from "../assets/home/arrow-service-next.svg";
 
@@ -49,23 +49,23 @@ import iconStep2 from "../assets/home/icon-step2.svg";
 import iconStep3 from "../assets/home/icon-step3.svg";
 import iconStepCar from "../assets/home/icon-step-car.svg";
 import iconStep5 from "../assets/home/icon-step5.svg";
-import section5 from "../assets/home/section5.svg";
+import section5 from "../assets/home/section5.webp";
 
-import galleryAlto3 from "../assets/home/gallery-alto-3.jpg";
-import galleryEngine1 from "../assets/home/gallery-engine-1.jpg";
-import galleryEngine2 from "../assets/home/gallery-engine-2.jpg";
-import galleryGt1 from "../assets/home/gallery-gt-1.jpg";
-import galleryGt2 from "../assets/home/gallery-gt-2.jpg";
-import galleryGarage1 from "../assets/home/gallery-garage-1.jpg";
-import galleryGarage2 from "../assets/home/gallery-garage-2.jpg";
-import galleryInnovaEngineBay from "../assets/home/gallery-innova-engine-bay.jpg";
-import galleryDiscBrakes1 from "../assets/home/gallery-disc-brakes-1.jpg";
-import galleryEngineBay1 from "../assets/home/gallery-engine-bay-1.jpg";
-import galleryEngineBay2 from "../assets/home/gallery-engine-bay-2.jpg";
-import galleryEngineWork5 from "../assets/home/gallery-engine-work-5.jpg";
-import galleryEngineWork8 from "../assets/home/gallery-engine-work-8.jpg";
-import galleryOthers1 from "../assets/home/gallery-others-1.jpg";
-import galleryParts1 from "../assets/home/gallery-parts-1.jpg";
+import galleryAlto3 from "../assets/home/gallery-alto-3.webp";
+import galleryEngine1 from "../assets/home/gallery-engine-1.webp";
+import galleryEngine2 from "../assets/home/gallery-engine-2.webp";
+import galleryGt1 from "../assets/home/gallery-gt-1.webp";
+import galleryGt2 from "../assets/home/gallery-gt-2.webp";
+import galleryGarage1 from "../assets/home/gallery-garage-1.webp";
+import galleryGarage2 from "../assets/home/gallery-garage-2.webp";
+import galleryInnovaEngineBay from "../assets/home/gallery-innova-engine-bay.webp";
+import galleryDiscBrakes1 from "../assets/home/gallery-disc-brakes-1.webp";
+import galleryEngineBay1 from "../assets/home/gallery-engine-bay-1.webp";
+import galleryEngineBay2 from "../assets/home/gallery-engine-bay-2.webp";
+import galleryEngineWork5 from "../assets/home/gallery-engine-work-5.webp";
+import galleryEngineWork8 from "../assets/home/gallery-engine-work-8.webp";
+import galleryOthers1 from "../assets/home/gallery-others-1.webp";
+import galleryParts1 from "../assets/home/gallery-parts-1.webp";
 import arrowGalleryPrev from "../assets/home/arrow-gallery-prev.svg";
 import arrowGalleryNext from "../assets/home/arrow-gallery-next.svg";
 
@@ -254,9 +254,26 @@ function Home() {
 
     const id = window.setInterval(() => {
       setHeroIndex((i) => (i + 1) % heroSlides.length);
-    }, 8000);
+    }, 6400);
 
     return () => window.clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    const scriptId = "EmbedSocialHashtagScript";
+
+    // ht.js only scans for .embedsocial-hashtag containers when it executes,
+    // and a script element runs only once. On re-entry to this route the
+    // container is a fresh (empty) node, so drop any previous script and
+    // append a new element to force a re-scan.
+    document.getElementById(scriptId)?.remove();
+
+    const script = document.createElement("script");
+    script.id = scriptId;
+    script.src = "https://embedsocial.com/cdn/ht.js";
+    document.head.appendChild(script);
+
+    return () => script.remove();
   }, []);
 
   const showPrevServicing = () =>
@@ -480,6 +497,27 @@ function Home() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      <section className="reviews-embed">
+        <div
+          className="embedsocial-hashtag reviews-embed-widget"
+          data-ref="dfdf781475bb905ef5bdc56bb8315eee7dc32bca"
+        >
+          <a
+            className="feed-powered-by-es feed-powered-by-es-slider-img es-widget-branding"
+            href="https://embedsocial.com/google-reviews-widget/"
+            target="_blank"
+            rel="noreferrer"
+            title="Embed Google reviews"
+          >
+            <img
+              src="https://embedsocial.com/cdn/icon/embedsocial-logo.webp"
+              alt="EmbedSocial"
+            />
+            <div className="es-widget-branding-text">Embed Google reviews</div>
+          </a>
         </div>
       </section>
     </>

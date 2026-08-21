@@ -6,7 +6,7 @@
   --ink-soft: #3d3c3c;
 
   --font-heading: 'Roboto Slab', serif;
-  --font-body: 'Poppins', system-ui, sans-serif;
+  --font-body: 'Gotham', system-ui, sans-serif;
 
   font: 16px/1.5 var(--font-body);
   color-scheme: light;

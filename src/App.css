@@ -1,5 +1,112 @@
+@font-face {
+  font-family: "Gotham Book";
+  src: url("./assets/fonts/Gotham-Book.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham Light";
+  src: url("./assets/fonts/Gotham-Light.otf") format("opentype");
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("./assets/fonts/Gotham-Thin.otf") format("opentype");
+  font-weight: 100;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("./assets/fonts/Gotham-Extra-Light.otf") format("opentype");
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("./assets/fonts/Gotham-Light.otf") format("opentype");
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("./assets/fonts/Gotham-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("./assets/fonts/Gotham-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("./assets/fonts/Gotham-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("./assets/fonts/Gotham-Black.otf") format("opentype");
+  font-weight: 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("./assets/fonts/Gotham-Ultra.otf") format("opentype");
+  font-weight: 950;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("./assets/fonts/Gotham-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("./assets/fonts/Gotham-Bold-Italic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("./assets/fonts/Gotham-Extra-Light-Italic.otf") format("opentype");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("./assets/fonts/Gotham-Thin-Italic.otf") format("opentype");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
 .page {
   overflow-x: hidden;
+}
+
+button {
+  font-family: "Gotham", var(--font-body);
+  font-weight: 500;
 }
 
 .container {
@@ -56,17 +163,19 @@
   background: var(--cream);
   color: var(--green);
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 1.5px;
+  font-weight: 500;
+  font-size: clamp(11px, 0.27vw + 9.4px, 14px);
+  letter-spacing: clamp(0.8px, 0.05vw + 0.5px, 1.5px);
   text-transform: uppercase;
   text-decoration: none;
-  padding: 14px 28px;
+  padding: clamp(10px, 0.28vw + 8.3px, 14px) clamp(14px, 1vw + 8px, 28px);
+  border: 1px solid var(--cream);
   border-radius: 4px;
   white-space: nowrap;
   transition:
     background-color 200ms ease,
-    color 200ms ease;
+    color 200ms ease,
+    border-color 200ms ease;
 }
 
 .btn-quote--desktop {
@@ -84,7 +193,8 @@
 }
 
 @media (min-width: 961px) {
-  .btn-quote:hover {
+  .btn-quote:hover,
+  .btn-submit:hover {
     background: var(--green);
     color: var(--cream);
   }
@@ -96,18 +206,21 @@
   border: none;
   cursor: pointer;
   padding: 8px;
+  color: var(--cream);
+  display: flex;
+  transition: color 200ms ease;
 }
 
-.hamburger img {
-  width: 28px;
-  height: 28px;
+@media (hover: hover) and (pointer: fine) {
+  .hamburger:hover {
+    color: var(--green);
+  }
 }
 
 .nav-menu {
   position: absolute;
-  top: 100%;
+  top: clamp(88px, 9.11vw, 175px);
   right: 0;
-  margin-top: 8px;
   background: var(--ink);
   border-radius: 4px;
   display: flex;
@@ -121,6 +234,7 @@
   padding: 14px 20px;
   color: var(--cream);
   text-decoration: none;
+  text-align: center;
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 14px;
@@ -133,6 +247,12 @@
 }
 
 @media (min-width: 961px) {
+  .nav-menu {
+    top: calc(clamp(88px, 9.11vw, 175px) + 8px);
+    right: 8px;
+    min-width: 240px;
+  }
+
   .nav-menu a:hover {
     background: var(--green);
   }
@@ -192,8 +312,10 @@
 }
 
 .hero-tagline-band p {
-  padding-block: 24px;
-  font-size: clamp(16px, 1.875vw, 32px);
+  padding-block: 26px;
+  font-family: "Gotham", var(--font-body);
+  font-weight: 500;
+  font-size: clamp(14px, 1.625vw, 27px);
   line-height: 1.4;
   letter-spacing: -0.3px;
   text-wrap: balance;
@@ -269,6 +391,12 @@
   align-items: center;
   overflow: hidden;
   background: white;
+}
+
+@media (min-width: 601px) and (max-width: 1200px) {
+  .brand-strip {
+    margin-top: clamp(20px, 2.6vw, 36px);
+  }
 }
 
 .brand-marquee-mask {
@@ -357,13 +485,14 @@
   --servicing-photo-height: clamp(220px, 32vw, 520px);
   background: var(--ink);
   color: var(--cream);
-  padding-block: clamp(32px, 5vw, 56px);
+  padding-block: clamp(49px, 6.9vw, 84px);
 }
 
 .servicing-title {
   color: var(--cream);
   text-align: center;
-  font-size: clamp(28px, 4.17vw, 80px);
+  font-size: calc(clamp(28px, 4.17vw, 80px) - 2px);
+  line-height: 1.4;
   margin-bottom: clamp(24px, 4vw, 40px);
   padding-inline: 20px;
 }
@@ -373,6 +502,13 @@
   align-items: flex-start;
   justify-content: center;
   gap: clamp(24px, 5vw, 80px);
+}
+
+@media (min-width: 961px) {
+  .servicing-title {
+    margin-top: -16px;
+    margin-bottom: calc(clamp(49px, 6.9vw, 84px) - 16px);
+  }
 }
 
 .servicing-peek-wrap {
@@ -554,7 +690,46 @@
 /* Process */
 
 .process {
-  padding-block: clamp(48px, 6vw, 96px);
+  padding-top: clamp(24px, 3vw, 48px);
+  /* Matches the gallery-to-process gap (gallery's padding-bottom + this
+     padding-top, both clamp(24px, 3vw, 48px)). reviews-embed's padding-top
+     is excluded: it paints #fff rather than --cream, so it reads as part of
+     that section rather than as gap. */
+  padding-bottom: calc(2 * clamp(24px, 3vw, 48px));
+}
+
+@media (min-width: 601px) and (max-width: 1200px) {
+  .process {
+    margin-block: clamp(24px, 3vw, 44px);
+  }
+}
+
+.reviews-embed {
+  margin: 0;
+  padding-top: clamp(24px, 4vw, 48px);
+  padding-bottom: clamp(24px, 3vw, 48px);
+  background: #fff;
+}
+
+@media (max-width: 960px) {
+  .reviews-embed {
+    padding-top: clamp(12px, 2vw, 24px);
+    padding-bottom: clamp(24px, 8vw, 48px);
+  }
+}
+
+@media (max-width: 600px) {
+  .reviews-embed {
+    padding-top: 0px;
+  }
+}
+
+.reviews-embed-widget {
+  width: 100%;
+}
+
+.reviews-embed-widget iframe {
+  width: 100% !important;
 }
 
 .process .container {
@@ -684,8 +859,9 @@
   background: var(--green);
   color: var(--cream);
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: clamp(15px, 1.6vw, 22px);
+  font-weight: 700;
+  font-size: calc(clamp(15px, 1.6vw, 22px) - 2px);
+  line-height: 1.4;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   padding: 16px clamp(32px, 5.5vw, 76px);
@@ -693,12 +869,15 @@
 
 .case-card h3 {
   color: var(--cream);
-  font-size: clamp(28px, 3.5vw, 45px);
+  font-size: calc(clamp(28px, 3.5vw, 45px) - 2px);
+  line-height: 1.4;
 }
 
 .case-card p {
-  font-size: clamp(16px, 2vw, 25px);
-  line-height: 1.6;
+  font-family: 'Gotham Book', var(--font-body);
+  font-weight: 400;
+  font-size: calc(clamp(16px, 2vw, 25px) - 2px);
+  line-height: 1.4;
 }
 
 .case-card ul {
@@ -711,14 +890,19 @@
 }
 
 .case-card ul li {
-  font-size: clamp(16px, 2vw, 25px);
+  font-family: 'Gotham Book', var(--font-body);
+  font-weight: 400;
+  font-size: calc(clamp(16px, 2vw, 25px) - 2px);
+  line-height: 1.4;
 }
 
 .case-card .outcome {
   background: var(--green);
   color: var(--cream);
-  font-size: clamp(16px, 2vw, 25px);
-  line-height: 1.5;
+  font-family: 'Gotham', var(--font-body);
+  font-weight: 500;
+  font-size: calc(clamp(16px, 2vw, 25px) - 2px);
+  line-height: 1.4;
   margin: 0;
   padding: clamp(20px, 3vw, 32px) clamp(32px, 5.5vw, 76px);
 }
@@ -726,7 +910,14 @@
 /* Gallery */
 
 .gallery {
-  padding-block: clamp(48px, 6vw, 96px);
+  padding-top: clamp(48px, 6vw, 96px);
+  padding-bottom: clamp(24px, 3vw, 48px);
+}
+
+@media (min-width: 601px) and (max-width: 1200px) {
+  .gallery {
+    margin-top: clamp(24px, 3vw, 44px);
+  }
 }
 
 .gallery-carousel {
@@ -806,17 +997,30 @@
   color: var(--cream);
 }
 
+.site-footer .container {
+  padding-inline: 10.4167vw;
+}
+
+@media (max-width: 600px) {
+  .site-footer .container {
+    padding-inline: 20px;
+  }
+}
+
 .footer-top {
   display: grid;
-  grid-template-columns: 45fr 55fr;
-  gap: clamp(32px, 5vw, 64px);
-  padding-block: clamp(48px, 6vw, 80px);
+  grid-template-columns: 47fr 53fr;
+  column-gap: clamp(43.3px, 6.09vw, 84.7px);
+  row-gap: clamp(32px, 5vw, 64px);
+  padding-top: clamp(48px, 6vw, 80px);
+  padding-bottom: clamp(20px, 2.5vw, 32px);
   align-items: center;
 }
 
 .footer-map-wrap {
   position: relative;
-  height: clamp(240px, 24vw, 360px);
+  align-self: stretch;
+  min-height: clamp(190px, 19vw, 280px);
   overflow: hidden;
   border-radius: 8px;
 }
@@ -837,17 +1041,26 @@
   border-radius: 8px;
 }
 
+.footer-contact {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .footer-info {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 32px;
 }
 
 .footer-address {
   display: flex;
   gap: 17px;
-  font-weight: 300;
-  font-size: 21px;
+  font-family: "Gotham Book", var(--font-body);
+  font-weight: 400;
+  font-size: 19px;
   line-height: 1.5;
   text-decoration: none;
 }
@@ -860,8 +1073,9 @@
   display: flex;
   align-items: center;
   gap: 17px;
+  font-family: "Gotham", var(--font-body);
   font-weight: 500;
-  font-size: 21px;
+  font-size: 19px;
   text-decoration: none;
 }
 
@@ -884,10 +1098,10 @@
 }
 
 .footer-social {
-  align-self: flex-end;
   display: flex;
   justify-content: flex-end;
   gap: 14px;
+  padding-bottom: clamp(24px, 3vw, 40px);
 }
 
 .social-link {
@@ -906,14 +1120,41 @@
   width: auto;
 }
 
-.footer-bottom {
-  border-top: 1px solid var(--ink-soft);
+/* Below this the two columns get too narrow: the address wraps tall and
+   crowds the map, so stack them instead. */
+@media (max-width: 1100px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-map-wrap {
+    height: 260px;
+  }
 }
 
-.footer-bottom p {
+.footer-bottom {
+  max-width: 1520px;
+  margin-inline: auto;
+  padding-inline: 10.4167vw;
+}
+
+/* Border lives on the text element so it inlines with the content above,
+   rather than spanning the full viewport width. */
+.site-footer .footer-bottom p {
+  max-width: none;
+  padding-inline: 0;
   padding-block: 24px;
+  border-top: 1px solid var(--ink-soft);
+  font-family: "Gotham Light", var(--font-body);
+  font-weight: 300;
   font-size: 14px;
   color: #96999f;
+}
+
+@media (max-width: 600px) {
+  .footer-bottom {
+    padding-inline: 20px;
+  }
 }
 
 /* Responsive */
@@ -993,6 +1234,7 @@
   .process-steps li {
     flex: 0 0 auto;
     max-height: none;
+    align-items: center;
     gap: 20px;
     padding-block: 16px;
   }
@@ -1036,22 +1278,12 @@
     display: none;
   }
 
-  .footer-top {
-    grid-template-columns: 1fr;
-  }
-
   .site-header {
     height: 88px;
   }
 
   .brand img {
     height: 52px;
-  }
-
-  .btn-quote {
-    padding: 12px 20px;
-    font-size: 13px;
-    letter-spacing: 1px;
   }
 
   .hamburger {
@@ -1064,9 +1296,9 @@
   }
 
   .nav-menu {
+    top: 88px;
     left: 0;
     right: 0;
-    margin-top: 0;
     min-width: 0;
     border-radius: 0;
     box-shadow: 0 16px 28px rgba(0, 0, 0, 0.4);
@@ -1083,8 +1315,9 @@
   }
 
   .servicing-title {
-    font-size: clamp(28px, 4.5vw, 48px);
-    margin-bottom: 28px;
+    font-size: calc(clamp(28px, 4.5vw, 48px) - 2px);
+    margin-top: -10px;
+    margin-bottom: calc(clamp(49px, 6.9vw, 84px) - 10px);
   }
 
   .servicing-carousel {
@@ -1165,11 +1398,7 @@
   }
 
   .footer-top {
-    padding-block: clamp(32px, 6vw, 48px);
-  }
-
-  .footer-map-wrap {
-    height: 260px;
+    padding-top: clamp(32px, 6vw, 48px);
   }
 }
 
@@ -1209,7 +1438,10 @@
   }
 
   .gallery {
-    padding-block: 40px;
+    /* 64px to match the gallery-to-process gap (24px + process's 40px),
+       since .servicing contributes no cream-coloured padding above. */
+    padding-top: 64px;
+    padding-bottom: 24px;
   }
 
   .gallery-grid {
@@ -1249,13 +1481,6 @@
     height: 40px;
   }
 
-  .btn-quote {
-    padding: 10px 14px;
-    font-size: 11px;
-    letter-spacing: 0.8px;
-    white-space: nowrap;
-  }
-
   .hamburger {
     padding: 4px;
   }
@@ -1265,6 +1490,10 @@
     height: 22px;
   }
 
+  .nav-menu {
+    top: 72px;
+  }
+
   .nav-menu a {
     padding: 14px 16px;
     font-size: 13px;
@@ -1272,13 +1501,17 @@
 
   .servicing {
     padding-top: 32px;
+    /* Keep at 0: this section has a dark background, so any padding here
+       reads as part of the section, not as gap. The full gap above the
+       gallery lives in .gallery's padding-top instead. */
     padding-bottom: 0;
   }
 
   .servicing-title {
-    font-size: 26px;
-    line-height: 1.2;
-    margin-bottom: 20px;
+    font-size: 24px;
+    line-height: 1.4;
+    margin-top: -8px;
+    margin-bottom: 24px;
     padding-inline: 16px;
   }
 
@@ -1299,7 +1532,8 @@
   }
 
   .tag {
-    font-size: 13px;
+    font-size: 11px;
+    line-height: 1.4;
     letter-spacing: 1px;
     padding: 12px 16px;
   }
@@ -1315,13 +1549,15 @@
   }
 
   .case-card h3 {
-    font-size: 24px;
+    font-size: 22px;
+    line-height: 1.4;
   }
 
   .case-card p,
   .case-card ul li,
   .case-card .outcome {
-    font-size: 15px;
+    font-size: 13px;
+    line-height: 1.4;
   }
 
   .case-card ul {
@@ -1340,7 +1576,8 @@
   }
 
   .process {
-    padding-block: 40px;
+    padding-top: 40px;
+    padding-bottom: 64px;
   }
 
   .process-heading {
@@ -1410,7 +1647,7 @@
     height: 14px;
   }
 
-  .footer-bottom p {
+  .site-footer .footer-bottom p {
     font-size: 13px;
   }
 }
@@ -1448,6 +1685,8 @@
 
 .about-hero-band p {
   padding-block: clamp(24px, 4vw, 40px);
+  font-family: "Gotham Book", var(--font-body);
+  font-weight: 400;
   font-size: clamp(15px, 1.3vw, 18px);
   line-height: 1.6;
   max-width: 1000px;
@@ -1498,7 +1737,9 @@
 
 .what-we-do p,
 .why-choose p {
-  font-size: 16px;
+  font-family: "Gotham Book", var(--font-body);
+  font-weight: 400;
+  font-size: 17px;
   line-height: 1.7;
 }
 
@@ -1517,7 +1758,8 @@
 }
 
 .team {
-  padding-block: clamp(48px, 6vw, 96px);
+  padding-top: clamp(48px, 6vw, 96px);
+  padding-bottom: clamp(80px, 9vw, 144px);
 }
 
 .team .heading-accent {
@@ -1583,7 +1825,7 @@
   padding: clamp(20px, 3vw, 32px);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 0;
 }
 
 .team-info {
@@ -1599,6 +1841,7 @@
   background: var(--green);
   color: var(--cream);
   font-family: var(--font-heading);
+  font-weight: 500;
   font-size: 20px;
   padding: 12px 20px;
   margin-top: 8px;
@@ -1612,6 +1855,7 @@
 .team-info h3 {
   font-size: clamp(22px, 2.2vw, 28px);
   text-transform: uppercase;
+  margin-bottom: -8px;
 }
 
 .team-role {
@@ -1621,21 +1865,28 @@
 
 .team-specializes-label {
   margin-top: 8px;
-  font-size: 14px;
-  font-weight: 600;
+  margin-bottom: -8px;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 .team-specializes {
-  font-size: 15px;
+  font-family: "Gotham Light", var(--font-body);
+  font-weight: 300;
+  font-size: 17px;
   color: var(--ink-soft);
 }
 
 .team-bio {
   margin: 0;
+  padding: 12px;
+  font-family: "Gotham Book", var(--font-body);
+  font-weight: 400;
   font-size: 20px;
-  line-height: 1.65;
+  line-height: 1.4;
   color: var(--cream);
 }
 
@@ -1645,6 +1896,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 838px;
+  margin-top: calc(clamp(88px, 9.11vw, 175px) / 2);
 }
 
 .contact-hero-image {
@@ -1665,21 +1917,27 @@
 .contact-panel h1 {
   color: var(--cream);
   font-size: clamp(28px, 3vw, 48px);
+  line-height: 1.1;
   margin-bottom: clamp(24px, 3vw, 40px);
 }
 
 .contact-form {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 24px;
   max-width: 520px;
 }
 
+.contact-form-field--half {
+  width: 60%;
+}
+
 .contact-form label {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  font-family: var(--font-body);
+  font-family: "Gotham", var(--font-body);
   font-weight: 500;
   font-size: 15px;
 }
@@ -1690,7 +1948,10 @@
   border: none;
   border-bottom: 1px solid var(--cream);
   color: var(--cream);
-  font: inherit;
+  font-family: "Gotham", var(--font-body);
+  font-weight: 500;
+  font-size: inherit;
+  line-height: inherit;
   padding: 6px 0;
   resize: vertical;
 }
@@ -1698,7 +1959,13 @@
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-bottom-color: var(--green-mid);
+  box-shadow: 0 1px 0 0 var(--cream);
+}
+
+.contact-field-error {
+  font-size: 12px;
+  font-weight: 400;
+  color: #ff8f8f;
 }
 
 .contact-form input::placeholder,
@@ -1708,20 +1975,29 @@
 
 .btn-submit {
   align-self: flex-start;
+  margin-top: 16px;
   background: var(--cream);
   color: var(--green);
   font-family: var(--font-body);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  border: none;
+  border: 1px solid var(--cream);
   border-radius: 4px;
   padding: 16px 40px;
   cursor: pointer;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease;
 }
 
 .contact-confirmation {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 16px;
   font-size: 14px;
 }
 
@@ -1732,9 +2008,10 @@
     gap: 28px;
   }
 
+  /* Full-width single column here, so a portrait ratio renders enormous. */
   .what-we-do-image {
     height: auto;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 16 / 9;
   }
 
   .why-choose > div:first-child {
@@ -1809,7 +2086,8 @@
   }
 
   .team {
-    padding-block: 40px;
+    padding-top: 40px;
+    padding-bottom: 72px;
   }
 
   .team .heading-accent {
@@ -1868,16 +2146,25 @@
 
   .contact-hero {
     grid-template-columns: 1fr;
+    margin-top: 44px;
   }
 
   .contact-hero-image {
     height: 360px;
+  }
+
+  .contact-panel {
+    padding-bottom: clamp(72px, 14vw, 140px);
   }
 }
 
 @media (max-width: 600px) {
   .about-hero {
     padding-top: 72px;
+  }
+
+  .contact-hero {
+    margin-top: 36px;
   }
 
   .what-we-do,
@@ -1929,5 +2216,25 @@
 
   .team-card + .team-card {
     margin-top: 28px;
+  }
+}
+
+/* Tablet stacks the team cards, which flattens the desktop alternation.
+   Restore it for the photo and info; the bio box stays full width. */
+@media (min-width: 601px) and (max-width: 1200px) {
+  .team-card .team-photo {
+    margin-inline: 0 auto;
+  }
+
+  .team-card.reverse .team-photo {
+    margin-inline: auto 0;
+  }
+
+  .team-card.reverse .team-info {
+    text-align: right;
+  }
+
+  .team-card.reverse .team-quote {
+    align-self: flex-end;
   }
 }

@@ -1,22 +1,22 @@
-import socialFacebook from '../assets/home/social-facebook.svg'
-import socialInstagram from '../assets/home/social-4.svg'
-import iconCall from '../assets/home/icon-call.svg'
-import iconPin from '../assets/home/icon-pin.svg'
+import socialFacebook from "../assets/home/social-facebook.svg";
+import socialInstagram from "../assets/home/social-4.svg";
+import iconCall from "../assets/home/icon-call.svg";
+import iconPin from "../assets/home/icon-pin.svg";
 
 const socialLinks = [
   {
-    icon: socialFacebook,
-    label: 'Facebook',
-    href: 'https://www.facebook.com/p/Grime-Grease-Garage-61566425213580/',
+    icon: socialInstagram,
+    label: "Instagram",
+    href: "https://www.instagram.com/grimengreasegarage/",
   },
   {
-    icon: socialInstagram,
-    label: 'Instagram',
-    href: 'https://www.instagram.com/grimengreasegarage/',
+    icon: socialFacebook,
+    label: "Facebook",
+    href: "https://www.facebook.com/p/Grime-Grease-Garage-61566425213580/",
   },
-]
+];
 
-const mapQuery = '12.8553085,77.6481841(Grime %26 Grease Garage)'
+const mapQuery = "12.8553085,77.6481841(Grime %26 Grease Garage)";
 
 function Footer() {
   return (
@@ -39,39 +39,36 @@ function Footer() {
             aria-label="Open Grime & Grease Garage location in Google Maps"
           />
         </div>
-        <div className="footer-info">
-          <a
-            className="footer-address"
-            href="https://maps.app.goo.gl/Brca4o5tngUr283W8"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img src={iconPin} alt="" className="footer-icon" />
-            <span className="footer-address-text">
-              Site No 11/1 Opposite MANYA MAGNAVILLE Chikkathoguru, Post, near
-              Gundthop, Electronic City, Devendra Nagar, Bengaluru, Karnataka
-              560100
-            </span>
-          </a>
-          <a className="footer-phone" href="tel:+919741297321">
-            <img src={iconCall} alt="" className="footer-icon" />
-            +91 97412 97321
-          </a>
-          <div className="footer-social">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noreferrer"
-                className="social-link"
-                aria-label={social.label}
-              >
-                <img src={social.icon} alt="" />
-              </a>
-            ))}
+        <div className="footer-contact">
+          <div className="footer-info">
+            <div className="footer-address">
+              <img src={iconPin} alt="" className="footer-icon" />
+              <span className="footer-address-text">
+                Site No 11/1 Opposite MANYA MAGNAVILLE Chikkathoguru, Post, near
+                Gundthop, Electronic City, Devendra Nagar, Bengaluru, Karnataka
+                560100
+              </span>
+            </div>
+            <div className="footer-phone">
+              <img src={iconCall} alt="" className="footer-icon" />
+              +91 97412 97321 / 99027 66229
+            </div>
           </div>
         </div>
+      </div>
+      <div className="container footer-social">
+        {socialLinks.map((social) => (
+          <a
+            key={social.label}
+            href={social.href}
+            target="_blank"
+            rel="noreferrer"
+            className="social-link"
+            aria-label={social.label}
+          >
+            <img src={social.icon} alt="" />
+          </a>
+        ))}
       </div>
       <div className="footer-bottom">
         <p className="container">
@@ -79,7 +76,7 @@ function Footer() {
         </p>
       </div>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;
