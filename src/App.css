@@ -393,6 +393,22 @@ button {
 
 /* Brand strip */
 
+.brand-strip-title {
+  width: fit-content;
+  margin-inline: auto;
+  margin-bottom: clamp(12px, 1.5vw, 24px);
+  padding: clamp(8px, 0.83vw, 16px) clamp(18px, 1.88vw, 36px);
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(16px, 1.46vw, 28px);
+  line-height: 1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 .brand-strip {
   padding-block: clamp(20px, 4.644vw, 89px);
   display: flex;

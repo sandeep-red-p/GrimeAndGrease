@@ -354,7 +354,10 @@ function Home() {
         </div>
       </section>
 
-      <section className="brand-strip" aria-label="Brands we service">
+      <h2 className="brand-strip-title" id="brand-strip-title">
+        Specialists In
+      </h2>
+      <section className="brand-strip" aria-labelledby="brand-strip-title">
         <div className="brand-marquee-mask">
           <div className="brand-marquee">
             <ul className="brand-list">
