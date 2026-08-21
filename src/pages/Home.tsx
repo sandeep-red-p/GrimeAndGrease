@@ -240,9 +240,19 @@ function Home() {
   const [gallery] = useState(() => shuffle(initialGallery));
   const [galleryStart, setGalleryStart] = useState(0);
   const preloaded = useRef<HTMLImageElement[]>([]);
+  const preloadedServicing = useRef<HTMLImageElement[]>([]);
 
   useEffect(() => {
     preloaded.current = initialGallery.map((item) => {
+      const img = new Image();
+      img.src = item.src;
+      void img.decode?.().catch(() => {});
+      return img;
+    });
+  }, []);
+
+  useEffect(() => {
+    preloadedServicing.current = caseStudies.map((item) => {
       const img = new Image();
       img.src = item.src;
       void img.decode?.().catch(() => {});
