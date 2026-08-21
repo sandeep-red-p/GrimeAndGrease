@@ -1923,6 +1923,12 @@ button {
   justify-content: center;
 }
 
+@media (min-width: 961px) {
+  .contact-panel {
+    padding-left: clamp(56px, 7vw, 128px);
+  }
+}
+
 .contact-panel h1 {
   color: var(--cream);
   font-size: clamp(28px, 3vw, 48px);
