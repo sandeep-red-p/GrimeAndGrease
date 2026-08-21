@@ -1,3 +1,5 @@
+import Img from "../components/Img";
+
 import heroTeam from "../assets/about/hero-team.webp";
 import whatWeDoImg from "../assets/about/what-we-do.webp";
 import whyChoose1 from "../assets/about/why-choose-1.webp";
@@ -58,10 +60,12 @@ function About() {
   return (
     <>
       <section className="about-hero">
-        <img
+        <Img
           className="about-hero-image"
           src={heroTeam}
           alt="The Grime & Grease Garage team"
+          loading="eager"
+          fetchPriority="high"
         />
         <div className="about-hero-band">
           <p className="container">
@@ -87,7 +91,7 @@ function About() {
 
       <section className="what-we-do container">
         <div className="what-we-do-image">
-          <img src={whatWeDoImg} alt="Engine repair at Grime & Grease Garage" />
+          <Img src={whatWeDoImg} alt="Engine repair at Grime & Grease Garage" />
         </div>
         <div>
           <h2 className="heading-accent">What We Do</h2>
@@ -121,8 +125,8 @@ function About() {
           </p>
         </div>
         <div className="why-choose-images">
-          <img src={whyChoose1} alt="A vehicle in the workshop" />
-          <img src={whyChoose2} alt="Technician working under the hood" />
+          <Img src={whyChoose1} alt="A vehicle in the workshop" />
+          <Img src={whyChoose2} alt="Technician working under the hood" />
         </div>
       </section>
 
@@ -136,7 +140,7 @@ function About() {
             >
               <div className="team-visual">
                 <div className="team-photo">
-                  <img src={member.photo} alt={member.name} />
+                  <Img src={member.photo} alt={member.name} />
                 </div>
                 <div className="team-photo-fill">
                   {member.bio.map((paragraph, i) => (

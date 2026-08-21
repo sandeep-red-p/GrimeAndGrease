@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+import Img from '../components/Img'
+
 import heroCar from '../assets/contact/hero-car.webp'
 
 const STATICFORMS_API_KEY = 'sf_880a02255fe645a1050f1477'
@@ -69,10 +71,12 @@ function Contact() {
 
   return (
     <section className="contact-hero">
-      <img
+      <Img
         className="contact-hero-image"
         src={heroCar}
         alt="A vehicle raised on a lift at Grime & Grease Garage"
+        loading="eager"
+        fetchPriority="high"
       />
       <div className="contact-panel">
         <h1>

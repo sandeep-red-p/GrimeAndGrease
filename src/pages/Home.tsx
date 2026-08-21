@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
+import Img from "../components/Img";
+
 import heroImg from "../assets/home/hero.webp";
 import heroImg1 from "../assets/home/hero1.webp";
 import heroMobile from "../assets/home/hero-mobile.webp";
@@ -300,10 +302,12 @@ function Home() {
           {heroSlides.map((slide, index) => (
             <picture key={slide.src}>
               <source media="(max-width: 600px)" srcSet={slide.mobile} />
-              <img
+              <Img
                 className={`hero-image${index === heroIndex ? " is-active" : ""}`}
                 src={slide.src}
                 alt={slide.alt}
+                loading="eager"
+                fetchPriority={index === 0 ? "high" : undefined}
               />
             </picture>
           ))}
@@ -370,7 +374,7 @@ function Home() {
 
         <div className="servicing-carousel">
           <div className="servicing-peek-wrap">
-            <img
+            <Img
               key={servicingIndex}
               className="servicing-peek"
               src={
@@ -393,7 +397,7 @@ function Home() {
 
           <div className="servicing-main" key={servicingIndex}>
             <div className="servicing-photo-wrap">
-              <img
+              <Img
                 className="servicing-photo"
                 src={activeCaseStudy.src}
                 alt={activeCaseStudy.alt}
@@ -416,7 +420,7 @@ function Home() {
           </div>
 
           <div className="servicing-peek-wrap">
-            <img
+            <Img
               key={servicingIndex}
               className="servicing-peek"
               src={caseStudies[(servicingIndex + 1) % caseStudies.length].src}
@@ -440,7 +444,7 @@ function Home() {
           <div className="gallery-grid">
             {visibleGallery.map((item, slot) => (
               <div className="gallery-item" key={slot}>
-                <img src={item.src} alt={item.alt} decoding="sync" />
+                <Img src={item.src} alt={item.alt} decoding="sync" />
               </div>
             ))}
           </div>
