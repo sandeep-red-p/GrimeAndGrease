@@ -1665,6 +1665,7 @@ button {
 .what-we-do,
 .why-choose,
 .team {
+  max-width: none;
   padding-inline: 10.4167vw;
 }
 
